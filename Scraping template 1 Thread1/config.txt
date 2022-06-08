@@ -1,0 +1,7 @@
+{
+  "logToFileI": "True",
+  "logToUII": "True",
+  "outputI": "D:\\Work\\Scraping_template_1_Thread1\\scrapingTemplateV51\\bin\\Debug\\output.csv",
+  "inputI": "D:\\Work\\Scraping_template_1_Thread1\\scrapingTemplateV51\\bin\\Debug\\input.txt",
+  "threadsI": "5"
+}
