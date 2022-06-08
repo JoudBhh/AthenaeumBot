@@ -29,8 +29,8 @@ namespace Scraping_template_1_Thread1
 {
     public partial class MainForm : MetroForm
     {
-        public bool LogToUi = true;
-        public bool LogToFile = true;
+        private bool _logToUi = true;
+        private bool _logToFile = true;
         Regex _regex = new Regex("[^a-zA-Z0-9]");
         private readonly string _path = Application.StartupPath;
         private int _maxConcurrency;
@@ -475,7 +475,7 @@ namespace Scraping_template_1_Thread1
                     Invoke(new WriteToLogD(WriteToLog), s, c);
                     return;
                 }
-                if (LogToUi)
+                if (_logToUi)
                 {
                     if (DebugT.Lines.Length > 5000)
                     {
@@ -486,7 +486,7 @@ namespace Scraping_template_1_Thread1
                     DebugT.AppendText(DateTime.Now.ToString(Utility.SimpleDateFormat) + " : " + s + Environment.NewLine);
                 }
                 Console.WriteLine(DateTime.Now.ToString(Utility.SimpleDateFormat) + @" : " + s);
-                if (LogToFile)
+                if (_logToFile)
                 {
                     File.AppendAllText(_path + "/data/log.txt", DateTime.Now.ToString(Utility.SimpleDateFormat) + @" : " + s + Environment.NewLine);
                 }
@@ -572,8 +572,8 @@ namespace Scraping_template_1_Thread1
         private async void startB_Click_1(object sender, EventArgs e)
         {
             SaveConfig();
-            LogToUi = logToUII.Checked;
-            LogToFile = logToFileI.Checked;
+            _logToUi = logToUII.Checked;
+            _logToFile = logToFileI.Checked;
             await Task.Run(MainWork);
         }
     }
